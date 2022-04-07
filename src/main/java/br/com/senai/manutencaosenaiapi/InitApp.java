@@ -32,6 +32,7 @@ public class InitApp {
 			System.out.println(outroTecnico);
 			if (tecnico.equals(outroTecnico)) {
 				System.out.println("São os mesmos");
+				
 			}
 	};
 	
