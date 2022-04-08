@@ -15,7 +15,7 @@ public class TecnicoService {
 	public Tecnico inserir(@Valid 
 			@NotNull (message = "O técnico não pode ser nulo")
 			Tecnico novoTecnico) {
-		
+		System.out.println("teste");
 		
 		Tecnico tecnicoSalvo = novoTecnico;
 		
