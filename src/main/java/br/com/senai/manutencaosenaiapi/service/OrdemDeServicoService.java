@@ -30,7 +30,7 @@ public class OrdemDeServicoService {
 		return ordemSalva;
 	}
 
-	public OrdemDeServico alterar (@ Valid OrdemDeServico ordemSalva) {
+	public OrdemDeServico alterar (@Valid OrdemDeServico ordemSalva) {
 		
 		this.validar(ordemSalva);
 		OrdemDeServico ordemAtualizada = ordemSalva;

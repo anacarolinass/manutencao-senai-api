@@ -18,8 +18,8 @@ import lombok.ToString;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente {
 	
-	@EqualsAndHashCode.Include
 	
+	@EqualsAndHashCode.Include
 	private Integer id;
 	
 	@NotEmpty(message = "O nome não pode ser nulo")
