@@ -1,5 +1,6 @@
 package br.com.senai.manutencaosenaiapi;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,18 +52,33 @@ public class InitApp {
 				Peca pecaSalva = pecasRepository.save(novaPeca);
 				System.out.println("Id da peça: " + pecaSalva.getId());*/
 			
-				Optional<Peca>  pecaEncontrada = pecasRepository.findById(7);
+				//Optional<Peca>  pecaEncontrada = pecasRepository.findById(7);
 				
-				pecaEncontrada.get().setEspecificacoes("Não é tão boa");
+				//pecasRepository.delete(pecaEncontrada.get());
+				
+				
+				
+				/*pecaEncontrada.get().setEspecificacoes("Não é tão boa");
 				
 				Peca pecaAlterada = pecasRepository.save(pecaEncontrada.get());
 				
-				System.out.println(pecaAlterada);
+				System.out.println(pecaAlterada);*/
 				
 				
-				if (pecaEncontrada.isPresent()) {
-				System.out.println("Peça encontrada: " + pecaEncontrada.get());
-				}
+				//if (pecaEncontrada.isPresent()) {
+				//System.out.println("Peça encontrada: " + pecaEncontrada.get());
+				
+				List<Peca> pecasEncontradas = pecasRepository.listaPor("%p%");
+				
+				 pecasEncontradas.forEach(peca -> {
+
+					 System.out.println("Peças Encontrada: " + peca);
+				 });
+				 
+				 for (Peca peca: pecasEncontradas) {
+					 System.out.println("Peça do banco ->" + peca);
+				 }
+				 
 			} catch (Exception e) {
 				
 				System.out.println(e.getMessage());

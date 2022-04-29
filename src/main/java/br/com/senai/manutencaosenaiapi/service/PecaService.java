@@ -41,13 +41,15 @@ public class PecaService {
 			@NotEmpty (message = "A descrição da busca é obrigatória")
 			@NotBlank (message = "A descrição não pode conter espaço em branco")
 			String descricao){
-		return new ArrayList<Peca>();
+		return repository.listaPor("%" + descricao + "%");
 	}
 	
 	public void removerPor(
 	@NotNull (message = "O id para remoção não pode ser nulo")
 	@Min(value = 1, message = "O id deve ser maior que zero")
 	Integer id) {
+		
+		this.repository.deleteById(id);
 
 }
 }
