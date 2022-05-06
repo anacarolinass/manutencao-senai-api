@@ -19,15 +19,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity (name = "Tecnico")
-@Table (name = "tecnicos")
+@Entity(name = "Tecnico")
+@Table(name = "tecnicos")
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Tecnico {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter @Setter 
+	@Getter @Setter
 	@EqualsAndHashCode.Include
 	private Integer id;
 	
@@ -38,7 +38,7 @@ public class Tecnico {
 	private String nomeCompleto;
 	
 	@Column(name = "dt_admissao")
-	@NotNull (message = "A data de admissão não pode ser nula")
+	@NotNull(message = "A data de admissão não pode ser nula")
 	@PastOrPresent(message = "A data de admissão não pode ser posterior a data atual")
 	@Getter @Setter
 	private LocalDate dataDeAdmissao;
@@ -46,13 +46,7 @@ public class Tecnico {
 	@Transient
 	public boolean isNovo() {
 		return getId() == null || getId() == 0;
-		
 	}
-	
-	}
-	
 
-
-
-	
+}
 

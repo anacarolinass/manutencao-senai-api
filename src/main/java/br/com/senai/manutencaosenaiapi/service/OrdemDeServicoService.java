@@ -1,6 +1,5 @@
 package br.com.senai.manutencaosenaiapi.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,50 +18,52 @@ import br.com.senai.manutencaosenaiapi.entity.OrdemDeServico;
 @Service
 @Validated
 public class OrdemDeServicoService {
-	
+
 	public OrdemDeServico inserir(
 			@Valid
-			@NotNull (message = "A nova ordem é obrigatória")
+			@NotNull(message = "A nova ordem é obrigatória")
 			OrdemDeServico novaOrdem) {
-
-		this.validar(novaOrdem);
+		this.validar(novaOrdem);				
 		OrdemDeServico ordemSalva = novaOrdem;
 		return ordemSalva;
 	}
-
-	public OrdemDeServico alterar (@Valid OrdemDeServico ordemSalva) {
-		
+	
+	public OrdemDeServico alterar(
+			@Valid
+			@NotNull(message = "A ordem salva é obrigatória")
+			OrdemDeServico ordemSalva) {
 		this.validar(ordemSalva);
 		OrdemDeServico ordemAtualizada = ordemSalva;
 		return ordemAtualizada;
-		
 	}
-	public OrdemDeServico fechar (
-			@Valid 
-			@NotNull (message = "A ordem é obrigatória")
+	
+	public OrdemDeServico fechar(
+			@Valid
+			@NotNull(message = "A ordem é obrigatória")
 			OrdemDeServico ordem) {
-		Preconditions.checkArgument(ordem.getDataDeEncerramento() == null,
-				"A data de encerramento é obrigatoria");
+		Preconditions.checkArgument(ordem.getDataDeEncerramento() != null,
+				"A data de encerramento é obrigatória");
 		
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(
+				ordem.getDescricaoDoReparo()),
+				"A descrição do reparo é obrigatória");
 		
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(ordem.getDescricaoDoReparo()),
-				"A descrição do reparo é obrigatoria");
+		boolean isPosterior = ordem.getDataDeEncerramento()
+				.isAfter(ordem.getDataDeAbertura());
 		
-		boolean isPosterior = ordem.getDataDeEncerramento().isAfter(ordem.getDataDeAbertura());
-		Preconditions.checkArgument(isPosterior, "A data de encerramento deve ser posterior a data de abertura");
+		Preconditions.checkArgument(isPosterior, 
+				"A data de encerramento deve ser posterior "
+				+ "a data de abertura");
 		OrdemDeServico ordemAtualizada = ordem;
 		return ordemAtualizada;
-		
 	}
 	
 	private void validar(OrdemDeServico ordem) {
-		
-		Preconditions.checkArgument(ordem.getDescricaoDoReparo() == null,
+		Preconditions.checkArgument(ordem.getDescricaoDoReparo() == null, 
 				"A descrição do reparo não deve ser informada na abertura");
 		
 		Preconditions.checkArgument(ordem.getDataDeEncerramento() == null,
-			"A data de encerramento não deve ser informada na abertura");
-		
+				"A data de encerramento não deve ser informada na abertura");
 	}
 	
 	public List<OrdemDeServico> listarPor(
@@ -70,15 +71,14 @@ public class OrdemDeServicoService {
 			@Min(value = 1, message = "O id deve ser maior que zero")
 			Integer idDoCliente){
 		return new ArrayList<OrdemDeServico>();
-		
 	}
 	
 	public void removerPor(
-			@NotNull (message = "O id da ordem é obrigatorio")
+			@NotNull(message = "O id da ordem é obrigatório")
 			@Min(value = 1, message = "O id deve ser maior que zero")
 			Integer idDaOrdem) {
 		
 	}
+	
 }
-
 

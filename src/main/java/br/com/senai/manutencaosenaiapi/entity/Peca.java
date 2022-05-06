@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Entity (name = "Peca")
-@Table (name = "Pecas")
+@Entity(name = "Peca")
+@Table(name = "pecas")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Peca {
@@ -27,17 +27,19 @@ public class Peca {
 	
 	@Column(name = "descricao")
 	@NotEmpty(message = "A descrição é obrigatória")
-	@Size(max = 150, message = "A descrição deve conter 150 caracteres")
+	@Size(max = 150, message = "A descrição deve conter "
+			+ "mais de 150 caracteres")
 	private String descricao;
 	
 	@Column(name = "especificacoes")
-	@Size(max = 400, message = "A especificação não deve conter mais de 400 caracteres")
+	@Size(max = 400, message = "A especificação não deve conter "
+			+ "mais de 400 caracteres")
 	private String especificacoes;
 	
 	@Column(name = "qtde_estoque")
 	@NotNull(message = "A quantidade é obrigatória")
-	@Min(value = 0 , message = "A quantidade não pode ser menor que zero")
-	private Integer qtdEmEstoque;
+	@Min(value = 0, message = "A quantidade não "
+			+ "pode ser menor que zero")
+	private Integer qtdeEmEstoque;
 	
-
 }
