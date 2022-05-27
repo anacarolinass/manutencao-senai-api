@@ -46,8 +46,13 @@ public class PecaTableModel extends AbstractTableModel {
 
 	public Peca getPor(int rowIndex) {
 		return pecas.get(rowIndex);
+		
 	}
 
+	public void removerPor(int rowIndex) {
+		pecas.remove(rowIndex);
+	
+	}
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 

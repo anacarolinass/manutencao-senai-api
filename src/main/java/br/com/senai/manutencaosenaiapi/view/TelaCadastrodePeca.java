@@ -74,7 +74,7 @@ public class TelaCadastrodePeca extends JFrame {
 
 					if (edtId.getText() != null && edtId.getText().length() > 0) {
 						Peca pecaSalva = new Peca();
-						//pecaSalva.setDescricao(edtdescricao.)
+						//pecaSalva.setDescricao(txtDescricao.getText)
 					pecaSalva.setQtdeEmEstoque(Integer.parseInt(edtQtd.getText()));
 					pecaSalva.setEspecificacoes(jtaEspecificacoes.getText());
 					pecaSalva.setId(Integer.parseInt(edtId.getText()));

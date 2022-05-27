@@ -9,15 +9,18 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import br.com.senai.manutencaosenaiapi.view.TelaConsultaDePeca;
+import br.com.senai.manutencaosenaiapi.view.TelaLogin;
 
 @SpringBootApplication
 public class InitApp {
 
-	@Autowired
+	//@Autowired
 	//private TelaCadastrodePeca telaDeCadastroDeTipo;
 	
-	private TelaConsultaDePeca telaConsultaDePeca;
+	//private TelaConsultaDePeca telaConsultaDePeca;
+	
+	@Autowired
+	private TelaLogin telaDeLogin;
 
 	public static void main(String[] args) {
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(InitApp.class);
@@ -34,9 +37,13 @@ public class InitApp {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-
-							telaConsultaDePeca.setVisible(true);
+							
+							telaDeLogin.setVisible(true);
+							
+							
+							//telaConsultaDePeca.setVisible(true);
 						} catch (Exception e) {
+							
 							e.printStackTrace();
 						}
 					}
